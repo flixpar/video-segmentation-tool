@@ -4,15 +4,14 @@
 		<title>Video</title>
 
 		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdn.plyr.io/3.3.23/plyr.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<h1>Video</h1>
 
-		<video id="player" playsinline controls>
-			<source src="{{ vid_path }}" type="video/mp4">
-		</video>
+		<img id="video"></img>
 
-		<script src="https://cdn.plyr.io/3.3.23/plyr.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/video.js') }}"></script>
 	</body>
 </html>
