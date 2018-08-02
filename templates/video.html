@@ -3,15 +3,47 @@
 	<head>
 		<title>Video</title>
 
-		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/segm_display.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css') }}">
+
 		<link rel="stylesheet" href="https://cdn.plyr.io/3.3.23/plyr.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<h1>Video</h1>
 
-		<video id="video" src="{{ url_for('static', filename=vid_path) }}" playsinline controls></video>
+		<div class="container" id="main-area">
+
+			<video id="video" src="{{ url_for('static', filename=vid_path) }}" playsinline controls></video>
+
+			<div id="act_select">
+				<button class="act-button" id="act0-button">Act 0</button>
+				<button class="act-button" id="act1-button">Act 1</button>
+				<button class="act-button" id="act2-button">Act 2</button>
+				<button class="act-button" id="act3-button">Act 3</button>
+				<button class="act-button" id="act4-button">Act 4</button>
+				<button class="act-button" id="act5-button">Act 5</button>
+				<button class="act-button" id="act6-button">Act 6</button>
+				<button class="act-button" id="act7-button">Act 7</button>
+				<button class="act-button" id="act8-button">Act 8</button>
+				<button class="act-button" id="act9-button">Act 9</button>
+			</div>
+
+		</div>
+
+		<div class="container" id="slider-area">
+			<input type="range" class="slider is-medium" id="speed-slider" step="0.5" min="0.5" max="15" value="1">
+			<div id="speed-disp">Speed: 1.0</div>
+		</div>
+
+		<div class="container" id="segm-display-area">
+			<div id="segm_display" data-len=100>
+				<div class="act act0" data-start=0 data-end=20></div>
+				<div class="act act2" data-start=20 data-end=90></div>
+				<div class="act act1" data-start=90 data-end=100></div>
+			</div>
+		</div>
 
 		<script type="text/javascript">
 			let vid_id = {{ vid_id }};
