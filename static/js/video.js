@@ -7,7 +7,12 @@ let player = new Plyr("#video");
 
 var display = document.getElementById("segm_display");
 
+var anns = [];
+
 var speed = 1.0;
+
+var duration = null;
+var gotAnns = false;
 
 console.log(vid_id);
 
@@ -17,18 +22,26 @@ console.log(vid_id);
 
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 socket.on('connect', function() {
-	socket.emit("get_frames", vid_id);
+	queryAnns();
+});
+
+function writeAnns() {
+	socket.emit("update_segm", vid_id, anns);
+}
+function queryAnns() {
+	socket.emit("query_segm", vid_id);
+}
+
+socket.on('get_segm', function(data) {
+	console.log(data);
+	anns = data;
+	gotAnns = true;
+	initDisplay();
 });
 
 ///////////////////////////////
 //////// Annotations //////////
 ///////////////////////////////
-
-var anns = [
-	{actID: 1, start:  0.0, stop: 22.2},
-	{actID: 2, start: 22.22, stop: 30.1},
-	{actID: 8, start: 30.1, stop: 44.1}
-];
 
 function convertAnns() {
 	while (display.firstChild) {
@@ -122,6 +135,7 @@ function changeAct(e) {
 
 	convertAnns();
 	updateDisplay();
+	writeAnns();
 }
 
 let b0 = document.getElementById("act0-button");
@@ -151,9 +165,12 @@ b9.addEventListener("click", changeAct);
 /////////////////////////////////
 
 var segments = display.childNodes;
-var duration = null;
 
 function initDisplay() {
+	if (video.duration == null || !gotAnns)
+		return;
+
+
 	convertAnns();
 	updateDisplay();
 
@@ -196,7 +213,7 @@ function initDisplay() {
 	prevActButton = b;
 }
 
-video.addEventListener("loadedmetadata", function() {
+video.addEventListener("durationchange", function() {
 	duration = video.duration;
 	display.dataset.duration = video.duration;
 	initDisplay();
@@ -217,7 +234,7 @@ function updateDisplay() {
 		let start = segm.dataset.start;
 		let stop  = segm.dataset.stop;
 
-		let len = (stop - start) / duration;
+		let len = (stop - start) / video.duration;
 
 		segm.style.width = len*100 + "%";
 	}

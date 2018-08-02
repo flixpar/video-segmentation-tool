@@ -1,6 +1,7 @@
 # custom
 data/*
 static/data/*
+db.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
