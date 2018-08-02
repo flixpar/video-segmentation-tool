@@ -1,0 +1,44 @@
+#segm_display {
+	width: 640px;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	flex-flow: row;
+	flex-wrap: nowrap;
+	border: 1px solid lightgray;
+}
+
+.act {
+	height: inherit;
+}
+
+.act0 {
+	background-color: white;
+}
+.act1 {
+	background-color: lightgray;
+}
+.act2 {
+	background-color: yellow;
+}
+.act3 {
+	background-color: orange;
+}
+.act4 {
+	background-color: pink;
+}
+.act5 {
+	background-color: brown;
+}
+.act6 {
+	background-color: blue;
+}
+.act7 {
+	background-color: red;
+}
+.act8 {
+	background-color: blue;
+}
+.act9 {
+	background-color: green;
+}
