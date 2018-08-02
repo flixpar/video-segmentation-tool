@@ -170,6 +170,8 @@ function initDisplay() {
 	if (video.duration == null || !gotAnns)
 		return;
 
+	if (anns.length == 0)
+		anns = [{actID:0, start:0, stop:video.duration}];
 
 	convertAnns();
 	updateDisplay();
