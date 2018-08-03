@@ -32,3 +32,7 @@ h3 {
 .vid-option:hover {
 	background-color: #b3b3b321;
 }
+
+.vid-done {
+	background-color: #3cb37136;
+}

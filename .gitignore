@@ -2,6 +2,7 @@
 data/*
 static/data/*
 db.json
+done.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

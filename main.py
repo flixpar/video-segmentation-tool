@@ -14,6 +14,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 db = TinyDB('db.json')
+done_db = TinyDB('done.json')
 
 
 @app.route('/')
@@ -23,7 +24,8 @@ def index():
     vid_paths  = sorted(list(vid_paths))
     vid_names  = [os.path.basename(fn)[:-4] for fn in vid_paths]
     vid_titles = [n[4:6] + '/' + n[6:8] + '/' + n[:4] + ' ' + n[9:] + ':00' for n in vid_names]
-    vid_list   = list(zip(vid_names, vid_titles))
+    vid_done   = [len(done_db.search(Query().vid_id == n)) > 0 for n in vid_names]
+    vid_list   = list(zip(vid_names, vid_titles, vid_done))
     return render_template("index.html", vid_list=vid_list)
 
 @app.route('/videos/<vid_id>')
@@ -42,6 +44,10 @@ def send_segm(vid_id):
         socketio.emit("get_segm", vid[0]["data"])
     else:
         socketio.emit("get_segm", [])
+
+@socketio.on('done')
+def done_video(vid_id):
+    done_db.insert({"vid_id": vid_id})
 
 if __name__ == '__main__':
     socketio.run(app)

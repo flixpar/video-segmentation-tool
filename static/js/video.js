@@ -34,6 +34,9 @@ function writeAnns() {
 function queryAnns() {
 	socket.emit("query_segm", vid_id);
 }
+function sendDone() {
+	socket.emit("done", vid_id)
+}
 
 socket.on('get_segm', function(data) {
 	console.log(data);
@@ -99,12 +102,15 @@ function getCurrentAct(t) {
 var prevActButton = document.createElement("null");
 
 function changeAct(e) {
-	let target = e.target;
-	let targetID = target.id;
-	let actNum = parseInt(e.target.id[3]);
 
-	target.classList.add("act-button-focused");
-	prevActButton.classList.remove("act-button-focused");
+	let target = this;
+	let targetID = target.id;
+	let actNum = parseInt(targetID.substr(3,2));
+
+	if (target !== prevActButton) {
+		target.classList.add("act-button-focused");
+		prevActButton.classList.remove("act-button-focused");
+	}
 
 	prevActButton = target;
 
@@ -151,7 +157,7 @@ let b6 = document.getElementById("act6-button");
 let b7 = document.getElementById("act7-button");
 let b8 = document.getElementById("act8-button");
 let b9 = document.getElementById("act9-button");
-let b10 = document.getElementById("act9-button");
+let b10 = document.getElementById("act10-button");
 
 b0.addEventListener("click", changeAct);
 b1.addEventListener("click", changeAct);
@@ -261,6 +267,15 @@ slider.addEventListener("change", function() {
 	speed = slider.value;
 	speed_disp.innerHTML = "Speed: " + parseFloat(speed).toFixed(1);
 	video.playbackRate = speed;
+});
+
+///////////////////////////////
+//////// Handle Done //////////
+///////////////////////////////
+
+let doneButton = document.getElementById("done-button");
+doneButton.addEventListener("click", function() {
+	sendDone();
 });
 
 ///////////////////////////////

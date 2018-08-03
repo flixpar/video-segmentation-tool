@@ -121,3 +121,14 @@ h1 {
 #act10-button > div[class=btn-num] {
 	background-color: deepskyblue;
 }
+
+#done-button {
+	height: 40px;
+	width: 100px;
+	background-color: #6495edf0;
+	border-radius: 4px;
+	border: none;
+	color: white;
+	font-size: 18px;
+	font-family: sans-serif;
+}

@@ -13,7 +13,11 @@
 			<div id="vid-select">
 				{% for vid in vid_list %}
 					<a href="videos/{{ vid[0] }}" class="vid-option-link">
-						<button id="{{ vid[0] }}" class="vid-option">{{ vid[1] }}</button>
+						{% if vid[2] %}
+							<button id="{{ vid[0] }}" class="vid-option vid-done">{{ vid[1] }}</button>
+						{% else %}
+							<button id="{{ vid[0] }}" class="vid-option">{{ vid[1] }}</button>
+						{% endif %}
 					</a>
 				{% endfor %}
 			</div>
