@@ -151,6 +151,7 @@ let b6 = document.getElementById("act6-button");
 let b7 = document.getElementById("act7-button");
 let b8 = document.getElementById("act8-button");
 let b9 = document.getElementById("act9-button");
+let b10 = document.getElementById("act9-button");
 
 b0.addEventListener("click", changeAct);
 b1.addEventListener("click", changeAct);
@@ -162,6 +163,7 @@ b6.addEventListener("click", changeAct);
 b7.addEventListener("click", changeAct);
 b8.addEventListener("click", changeAct);
 b9.addEventListener("click", changeAct);
+b10.addEventListener("click", changeAct);
 
 /////////////////////////////////
 ///////// Init Display //////////
@@ -209,6 +211,9 @@ function initDisplay() {
 			break;
 		case 9:
 			b = b9;
+			break;
+		case 10:
+			b = b10;
 			break;
 		default:
 			b = b0;
