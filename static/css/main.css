@@ -8,6 +8,10 @@
 	margin-left: 10%;
 }
 
+h1 {
+	font-family: sans-serif;
+}
+
 #main-area {
 	height: 480px;
 	display: flex;

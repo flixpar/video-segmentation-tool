@@ -16,6 +16,9 @@ var gotAnns = false;
 
 console.log(vid_id);
 
+var title_disp = document.getElementById("title");
+title_disp.innerHTML = "Video - " + vid_id.substr(4,2) + "/" + vid_id.substr(6,2) + "/" + vid_id.substr(0,4) + " " + vid_id.substr(9,2) + ":00";
+
 ///////////////////////////////
 ////////// Sockets ////////////
 ///////////////////////////////
