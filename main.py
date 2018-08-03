@@ -19,7 +19,9 @@ db = TinyDB('db.json')
 @app.route('/')
 @app.route('/videos')
 def index():
-    return render_template("index.html")
+    vid_list = glob.glob("static/data/*.mp4")
+    vid_list = [os.path.basename(fn)[:-4] for fn in vid_list]
+    return render_template("index.html", vid_list=vid_list)
 
 @app.route('/videos/<vid_id>')
 def video(vid_id):
