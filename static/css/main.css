@@ -61,6 +61,8 @@ h1 {
 	border-bottom: 1px solid lightgray;
 	display: flex;
 	text-align: left;
+	justify-content: space-between;
+	padding: 2px;
 }
 .act-button:focus {
 	outline: none;
@@ -72,8 +74,50 @@ h1 {
 }
 
 .btn-num {
-	width: 24px;
+    color: white;
+    height: 30px;
+    width: 13%;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 1.2vw;
 }
 .btn-txt {
-	margin-left: 8px;
+	width: 80%;
+	font-size: 1vw;
+}
+
+#act0-button > div[class=btn-num] {
+	background-color: black;
+}
+#act1-button > div[class=btn-num] {
+	background-color: lightgray;
+}
+#act2-button > div[class=btn-num] {
+	background-color: yellow;
+}
+#act3-button > div[class=btn-num] {
+	background-color: orange;
+}
+#act4-button > div[class=btn-num] {
+	background-color: pink;
+}
+#act5-button > div[class=btn-num] {
+	background-color: brown;
+}
+#act6-button > div[class=btn-num] {
+	background-color: purple;
+}
+#act7-button > div[class=btn-num] {
+	background-color: red;
+}
+#act8-button > div[class=btn-num] {
+	background-color: blue;
+}
+#act9-button > div[class=btn-num] {
+	background-color: green;
+}
+#act10-button > div[class=btn-num] {
+	background-color: deepskyblue;
 }
