@@ -2,19 +2,22 @@
 <html>
 	<head>
 		<title>Main</title>
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 	</head>
 	<body>
-		<h1>Main</h1>
+		<div class="container">
 
-		<div id="video-select">
-			{% for vid in vid_list %}
-				<a href="videos/{{ vid }}">
-					<div id="{{ vid }}" class="vid-option">{{ vid }}</div>
-				</a>
-			{% endfor %}
+			<h1>Video Segmentation Tool</h1>
+
+			<h3>Videos:</h3>
+			<div id="vid-select">
+				{% for vid in vid_list %}
+					<a href="videos/{{ vid }}" class="vid-option-link">
+						<button id="{{ vid }}" class="vid-option">{{ vid }}</button>
+					</a>
+				{% endfor %}
+			</div>
+
 		</div>
-
 	</body>
 </html>
